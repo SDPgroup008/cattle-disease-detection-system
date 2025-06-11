@@ -18,6 +18,8 @@ opencv-python-headless==4.8.1.78
 # AI/ML Core
 numpy==1.24.3
 onnxruntime==1.16.0
+torch==2.0.1
+torchvision==0.15.2
 
 # Data Science (Essential only)
 matplotlib==3.7.2
@@ -29,5 +31,5 @@ requests==2.31.0
 gdown==4.7.1
 
 # File Processing
-reportlab==4.2.5
+reportlab==4.2.5 
 python-docx==1.1.2
