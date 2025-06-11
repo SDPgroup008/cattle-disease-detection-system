@@ -41,17 +41,24 @@ from .explainability_fallback import generate_explainability_images_fallback
 logger = logging.getLogger(__name__)
 
 # Load the ONNX model with better error handling
+# Load the ONNX model with better error handling and provider specification
 try:
     import onnxruntime as ort
     model_path = os.path.join(os.path.dirname(__file__), '..', 'cattle_disease_model.onnx')
     if os.path.exists(model_path):
-        model = ort.InferenceSession(model_path)
-        logger.info("ONNX model loaded successfully")
+        # Explicitly specify providers to fix ORT 1.9+ requirement
+        providers = ['CPUExecutionProvider']  # Use only CPU provider for better compatibility
+        model = ort.InferenceSession(model_path, providers=providers)
+        logger.info("ONNX model loaded successfully with CPUExecutionProvider")
     else:
         logger.warning(f"ONNX model not found at {model_path}")
         model = None
+except ImportError:
+    logger.warning("ONNX Runtime not available, using simulated predictions")
+    model = None
 except Exception as e:
     logger.error(f"Error loading ONNX model: {e}")
+    logger.info("Falling back to simulated predictions for demo purposes")
     model = None
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
