@@ -58,7 +58,7 @@ except ImportError:
     model = None
 except Exception as e:
     logger.error(f"Error loading ONNX model: {e}")
-    logger.info("Falling back to simulated predictions for demo purposes")
+    
     model = None
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
