@@ -20,7 +20,7 @@ import logging
 from django.template.loader import render_to_string
 from django.conf import settings
 import io
-
+from .model_downloader import download_model
 # PDF and Word document generation imports
 from reportlab.lib.pagesizes import letter, A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -130,6 +130,11 @@ def dashboard_data(request):
 
 @login_required
 def upload_image(request):
+    if not os.path.exists('cattle_disease_model.onnx'):
+        if not download_model():
+            messages.error(request, 'AI model not available. Please try again later.')
+            return redirect('dashboard')
+        
     if request.method == 'POST':
         image = request.FILES.get('image')
         cattle_id = request.POST.get('cattle_id')

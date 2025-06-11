@@ -2,21 +2,33 @@
 # exit on error
 set -o errexit
 
-# Install dependencies
+echo "🚀 Starting build process..."
+
+# Install Python dependencies
+echo "📦 Installing dependencies..."
 pip install -r requirements_render.txt
 
-# Collect static files
-python manage.py collectstatic --no-input
+# Download the AI model
+echo "🤖 Downloading AI model..."
+python model_downloader.py
 
-# Run migrations
-python manage.py migrate
+# Collect static files
+echo "📁 Collecting static files..."
+python manage_render.py collectstatic --no-input
+
+# Run database migrations
+echo "🗄️ Running database migrations..."
+python manage_render.py migrate
 
 # Create superuser if it doesn't exist
-python manage.py shell << EOF
+echo "👤 Setting up admin user..."
+python manage_render.py shell << EOF
 from django.contrib.auth.models import User
 if not User.objects.filter(username='admin').exists():
     User.objects.create_superuser('admin', 'admin@example.com', 'admin123')
-    print('Superuser created: admin/admin123')
+    print('✅ Superuser created: admin/admin123')
 else:
-    print('Superuser already exists')
+    print('✅ Superuser already exists')
 EOF
+
+echo "✅ Build completed successfully!"
