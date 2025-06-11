@@ -32,7 +32,7 @@ from docx import Document
 from docx.shared import Inches, Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.style import WD_STYLE_TYPE
-
+import onnxruntime as ort
 # Import the fallback explainability function
 from .explainability_fallback import generate_explainability_images_fallback
 
