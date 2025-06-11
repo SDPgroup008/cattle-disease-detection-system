@@ -6,11 +6,12 @@ echo "🚀 Starting build process..."
 
 # Install Python dependencies
 echo "📦 Installing dependencies..."
+pip install --upgrade pip
 pip install -r requirements_render.txt
 
 # Download the AI model
 echo "🤖 Downloading AI model..."
-python model_downloader.py
+python detection/model_downloader.py
 
 # Collect static files
 echo "📁 Collecting static files..."
