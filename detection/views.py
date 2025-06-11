@@ -42,17 +42,25 @@ logger = logging.getLogger(__name__)
 
 # Load the ONNX model with better error handling
 try:
-    import onnxruntime as ort
-    model_path = os.path.join(os.path.dirname(__file__), '..', 'cattle_disease_model.onnx')
-    if os.path.exists(model_path):
-        model = ort.InferenceSession(model_path)
-        logger.info("ONNX model loaded successfully")
-    else:
-        logger.warning(f"ONNX model not found at {model_path}")
-        model = None
-except Exception as e:
-    logger.error(f"Error loading ONNX model: {e}")
-    model = None
+        # Explicitly specify providers as required by ONNX Runtime 1.9+
+        providers = ['CPUExecutionProvider']
+        session_options = ort.SessionOptions()
+        
+        # Set graph optimization level
+        session_options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_BASIC
+        
+        # Create session with explicit providers
+        session = ort.InferenceSession(
+            model_path, 
+            providers=providers,
+            sess_options=session_options
+        )
+        
+        print(f"ONNX model loaded successfully with providers: {providers}")
+        return session
+    except Exception as e:
+        print(f"Error loading ONNX model: {str(e)}")
+        return None
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
