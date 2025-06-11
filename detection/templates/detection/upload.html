@@ -1,0 +1,217 @@
+{% extends 'detection/base.html' %}
+
+{% block title %}Upload Image - Cattle Disease Detection{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Header -->
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold mb-3">
+                    <i class="fas fa-cloud-upload-alt text-primary me-3"></i>
+                    Upload Image for Analysis
+                </h1>
+                <p class="lead text-secondary">Upload cattle images for AI-powered disease detection</p>
+            </div>
+
+            <!-- Upload Form -->
+            <div class="modern-card">
+                <form method="post" enctype="multipart/form-data" id="uploadForm">
+                    {% csrf_token %}
+                    
+                    <!-- Cattle Selection -->
+                    <div class="mb-4">
+                        <label for="cattle_id" class="form-label fw-semibold">
+                            <i class="fas fa-cow me-2 text-primary"></i>
+                            Select Cattle
+                        </label>
+                        <select class="form-control form-control-modern" id="cattle_id" name="cattle_id" required>
+                            <option value="">Choose a cattle...</option>
+                            {% for cattle in cattle %}
+                                <option value="{{ cattle.id }}">
+                                    {{ cattle.tag_number }} - {{ cattle.breed }} ({{ cattle.age }} years)
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Image Upload -->
+                    <div class="mb-4">
+                        <label for="image" class="form-label fw-semibold">
+                            <i class="fas fa-image me-2 text-secondary"></i>
+                            Upload Image
+                        </label>
+                        <div class="upload-area" id="uploadArea">
+                            <input type="file" class="form-control form-control-modern" id="image" name="image" accept="image/*" required style="display: none;">
+                            <div class="upload-content text-center py-5">
+                                <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
+                                <h5 class="mb-2">Drag & Drop your image here</h5>
+                                <p class="text-secondary mb-3">or click to browse files</p>
+                                <button type="button" class="btn btn-modern" onclick="document.getElementById('image').click()">
+                                    <i class="fas fa-folder-open me-2"></i>
+                                    Browse Files
+                                </button>
+                            </div>
+                            <div class="upload-preview" id="uploadPreview" style="display: none;">
+                                <img id="previewImage" src="/placeholder.svg" alt="Preview" class="img-fluid rounded">
+                                <div class="preview-overlay">
+                                    <button type="button" class="btn btn-danger-modern btn-sm" onclick="removeImage()">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-modern btn-lg px-5" id="submitBtn">
+                            <i class="fas fa-microscope me-2"></i>
+                            Analyze Image
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="modern-card text-center h-100">
+                        <i class="fas fa-robot fa-2x text-primary mb-3"></i>
+                        <h6 class="fw-semibold">AI-Powered</h6>
+                        <p class="text-secondary small">Advanced machine learning algorithms for accurate detection</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="modern-card text-center h-100">
+                        <i class="fas fa-clock fa-2x text-success mb-3"></i>
+                        <h6 class="fw-semibold">Fast Results</h6>
+                        <p class="text-secondary small">Get analysis results in seconds with detailed explanations</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="modern-card text-center h-100">
+                        <i class="fas fa-shield-alt fa-2x text-warning mb-3"></i>
+                        <h6 class="fw-semibold">Secure</h6>
+                        <p class="text-secondary small">Your data is encrypted and securely processed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    background: var(--glass-bg);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.upload-area.dragover {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.1);
+    transform: scale(1.02);
+}
+
+.upload-preview {
+    position: relative;
+}
+
+.preview-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#previewImage {
+    max-height: 300px;
+    object-fit: cover;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('image');
+    const uploadContent = document.querySelector('.upload-content');
+    const uploadPreview = document.getElementById('uploadPreview');
+    const previewImage = document.getElementById('previewImage');
+    const form = document.getElementById('uploadForm');
+
+    // Click to upload
+    uploadArea.addEventListener('click', function(e) {
+        if (e.target.closest('.preview-overlay')) return;
+        fileInput.click();
+    });
+
+    // Drag and drop functionality
+    uploadArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', function(e) {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            fileInput.files = files;
+            handleFileSelect(files[0]);
+        }
+    });
+
+    // File input change
+    fileInput.addEventListener('change', function(e) {
+        if (e.target.files.length > 0) {
+            handleFileSelect(e.target.files[0]);
+        }
+    });
+
+    function handleFileSelect(file) {
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                uploadContent.style.display = 'none';
+                uploadPreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Form submission
+    form.addEventListener('submit', function() {
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.innerHTML = '<span class="loading-spinner me-2"></span>Analyzing...';
+        submitBtn.disabled = true;
+    });
+});
+
+function removeImage() {
+    const fileInput = document.getElementById('image');
+    const uploadContent = document.querySelector('.upload-content');
+    const uploadPreview = document.getElementById('uploadPreview');
+    
+    fileInput.value = '';
+    uploadContent.style.display = 'block';
+    uploadPreview.style.display = 'none';
+}
+</script>
+{% endblock %}

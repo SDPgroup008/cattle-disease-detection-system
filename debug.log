@@ -1,0 +1,124 @@
+INFO 2025-06-10 15:13:22,368 autoreload Watching for file changes with StatReloader
+INFO 2025-06-10 15:15:35,809 autoreload Watching for file changes with StatReloader
+INFO 2025-06-10 15:15:50,290 views ONNX model loaded successfully
+INFO 2025-06-10 15:15:58,613 basehttp "GET / HTTP/1.1" 200 5397
+INFO 2025-06-10 15:15:59,176 basehttp "GET /static/css/styles.css HTTP/1.1" 200 592
+INFO 2025-06-10 15:16:00,253 basehttp "GET /static/js/dashboard.js HTTP/1.1" 200 4189
+INFO 2025-06-10 15:16:00,574 basehttp "GET /static/js/charts.js HTTP/1.1" 200 77
+INFO 2025-06-10 15:16:02,410 basehttp "GET /api/dashboard-data/ HTTP/1.1" 200 336
+WARNING 2025-06-10 15:16:02,942 log Not Found: /favicon.ico
+WARNING 2025-06-10 15:16:02,943 basehttp "GET /favicon.ico HTTP/1.1" 404 4105
+INFO 2025-06-10 15:16:20,085 basehttp "GET /upload/ HTTP/1.1" 200 3182
+INFO 2025-06-10 15:16:43,555 explainability_fallback Generated gradient visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\66_integrated_gradients.png
+INFO 2025-06-10 15:16:43,558 explainability_fallback Generated integrated_gradients for test result 66
+INFO 2025-06-10 15:16:43,586 explainability_fallback Generated GradCAM-like visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\66_gradcam.png
+INFO 2025-06-10 15:16:43,587 explainability_fallback Generated gradcam for test result 66
+INFO 2025-06-10 15:16:43,738 explainability_fallback Generated occlusion visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\66_occlusion.png
+INFO 2025-06-10 15:16:43,740 explainability_fallback Generated occlusion for test result 66
+INFO 2025-06-10 15:16:43,783 explainability_fallback Generated LIME-like visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\66_lime.png
+INFO 2025-06-10 15:16:43,784 explainability_fallback Generated lime for test result 66
+INFO 2025-06-10 15:16:43,804 explainability_fallback Generated 4/4 explainability images for test result 66
+INFO 2025-06-10 15:16:43,805 views Generated explainability images for test result 66
+INFO 2025-06-10 15:16:43,824 basehttp "POST /upload/ HTTP/1.1" 302 0
+INFO 2025-06-10 15:16:44,098 basehttp "GET /results/66/ HTTP/1.1" 200 4461
+INFO 2025-06-10 15:16:44,129 basehttp "GET /media/uploads/Normal_Skin_8_3fn64YS.png HTTP/1.1" 200 148712
+INFO 2025-06-10 15:16:44,197 basehttp "GET /media/explainability/66_integrated_gradients.png HTTP/1.1" 200 78586
+INFO 2025-06-10 15:16:44,200 basehttp "GET /media/explainability/66_gradcam.png HTTP/1.1" 200 77108
+INFO 2025-06-10 15:16:44,325 basehttp "GET /media/explainability/66_occlusion.png HTTP/1.1" 200 73379
+INFO 2025-06-10 15:16:44,404 basehttp "GET /media/explainability/66_lime.png HTTP/1.1" 200 81070
+INFO 2025-06-10 15:35:11,269 autoreload Watching for file changes with StatReloader
+INFO 2025-06-10 15:35:25,562 views ONNX model loaded successfully
+INFO 2025-06-10 15:35:38,840 basehttp "GET / HTTP/1.1" 200 25943
+INFO 2025-06-10 15:35:41,283 basehttp "GET /api/dashboard-data/ HTTP/1.1" 200 360
+WARNING 2025-06-10 15:35:43,917 log Not Found: /favicon.ico
+WARNING 2025-06-10 15:35:43,977 basehttp "GET /favicon.ico HTTP/1.1" 404 4105
+INFO 2025-06-10 15:36:00,569 basehttp "GET /upload/ HTTP/1.1" 200 23243
+WARNING 2025-06-10 15:36:00,747 log Not Found: /placeholder.svg
+WARNING 2025-06-10 15:36:00,905 basehttp "GET /placeholder.svg HTTP/1.1" 404 4117
+INFO 2025-06-10 15:37:08,682 explainability_fallback Generated gradient visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\67_integrated_gradients.png
+INFO 2025-06-10 15:37:08,688 explainability_fallback Generated integrated_gradients for test result 67
+INFO 2025-06-10 15:37:09,090 explainability_fallback Generated GradCAM-like visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\67_gradcam.png
+INFO 2025-06-10 15:37:09,096 explainability_fallback Generated gradcam for test result 67
+INFO 2025-06-10 15:37:10,362 explainability_fallback Generated occlusion visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\67_occlusion.png
+INFO 2025-06-10 15:37:10,444 explainability_fallback Generated occlusion for test result 67
+INFO 2025-06-10 15:37:10,801 explainability_fallback Generated LIME-like visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\67_lime.png
+INFO 2025-06-10 15:37:10,827 explainability_fallback Generated lime for test result 67
+INFO 2025-06-10 15:37:10,959 explainability_fallback Generated 4/4 explainability images for test result 67
+INFO 2025-06-10 15:37:10,962 views Generated explainability images for test result 67
+INFO 2025-06-10 15:37:11,010 basehttp "POST /upload/ HTTP/1.1" 302 0
+INFO 2025-06-10 15:37:11,609 basehttp "GET /results/67/ HTTP/1.1" 200 21146
+INFO 2025-06-10 15:37:12,433 basehttp "GET /media/uploads/mouth_4-5_days_4WM.jpg HTTP/1.1" 200 922121
+INFO 2025-06-10 15:37:12,643 basehttp "GET /media/explainability/67_lime.png HTTP/1.1" 200 110143
+INFO 2025-06-10 15:37:12,651 basehttp "GET /media/explainability/67_gradcam.png HTTP/1.1" 200 99600
+INFO 2025-06-10 15:37:12,817 basehttp "GET /media/explainability/67_integrated_gradients.png HTTP/1.1" 200 103203
+INFO 2025-06-10 15:37:13,053 basehttp "GET /media/explainability/67_occlusion.png HTTP/1.1" 200 98632
+INFO 2025-06-10 15:38:31,622 basehttp "GET / HTTP/1.1" 200 25943
+INFO 2025-06-10 15:38:32,079 basehttp "GET /api/dashboard-data/ HTTP/1.1" 200 360
+INFO 2025-06-10 15:45:28,607 basehttp "GET / HTTP/1.1" 200 36959
+INFO 2025-06-10 15:45:30,072 basehttp "GET /api/dashboard-data/ HTTP/1.1" 200 360
+INFO 2025-06-10 15:47:34,356 basehttp "GET /upload/ HTTP/1.1" 200 34591
+WARNING 2025-06-10 15:47:34,811 log Not Found: /placeholder.svg
+WARNING 2025-06-10 15:47:34,820 basehttp "GET /placeholder.svg HTTP/1.1" 404 4117
+INFO 2025-06-10 15:49:47,865 explainability_fallback Generated gradient visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\68_integrated_gradients.png
+INFO 2025-06-10 15:49:47,868 explainability_fallback Generated integrated_gradients for test result 68
+INFO 2025-06-10 15:49:47,963 explainability_fallback Generated GradCAM-like visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\68_gradcam.png
+INFO 2025-06-10 15:49:47,981 explainability_fallback Generated gradcam for test result 68
+INFO 2025-06-10 15:49:48,304 explainability_fallback Generated occlusion visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\68_occlusion.png
+INFO 2025-06-10 15:49:48,309 explainability_fallback Generated occlusion for test result 68
+INFO 2025-06-10 15:49:48,508 explainability_fallback Generated LIME-like visualization: C:\Users\user\Desktop\final yr project\cattle_disease\media\explainability\68_lime.png
+INFO 2025-06-10 15:49:48,511 explainability_fallback Generated lime for test result 68
+INFO 2025-06-10 15:49:48,527 explainability_fallback Generated 4/4 explainability images for test result 68
+INFO 2025-06-10 15:49:48,532 views Generated explainability images for test result 68
+INFO 2025-06-10 15:49:48,556 basehttp "POST /upload/ HTTP/1.1" 302 0
+INFO 2025-06-10 15:49:49,379 basehttp "GET /results/68/ HTTP/1.1" 200 32442
+INFO 2025-06-10 15:49:49,794 basehttp "GET /media/uploads/5198047453_ab0d6212d0_bWM-1_4gETrAX.jpg HTTP/1.1" 200 369226
+INFO 2025-06-10 15:49:50,257 basehttp "GET /media/explainability/68_integrated_gradients.png HTTP/1.1" 200 120583
+INFO 2025-06-10 15:49:50,548 basehttp "GET /media/explainability/68_gradcam.png HTTP/1.1" 200 118398
+INFO 2025-06-10 15:49:50,580 basehttp "GET /media/explainability/68_occlusion.png HTTP/1.1" 200 117046
+INFO 2025-06-10 15:49:50,626 basehttp "GET /media/explainability/68_lime.png HTTP/1.1" 200 126064
+INFO 2025-06-10 15:51:28,981 basehttp "GET /history/ HTTP/1.1" 200 28770
+INFO 2025-06-10 15:52:44,923 basehttp "GET /register-cattle/ HTTP/1.1" 200 25276
+INFO 2025-06-10 15:53:25,883 basehttp "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-06-10 15:53:25,914 basehttp "GET / HTTP/1.1" 302 0
+INFO 2025-06-10 15:53:26,462 basehttp "GET /accounts/login/?next=/ HTTP/1.1" 200 3556
+INFO 2025-06-10 15:58:07,098 basehttp "GET /accounts/signup/ HTTP/1.1" 200 3858
+INFO 2025-06-10 15:58:48,449 basehttp "GET /accounts/login/ HTTP/1.1" 200 3556
+INFO 2025-06-10 16:06:31,832 basehttp "GET /accounts/login/ HTTP/1.1" 200 18163
+INFO 2025-06-10 16:07:37,735 basehttp "GET /accounts/signup/ HTTP/1.1" 200 25288
+INFO 2025-06-10 16:08:28,695 basehttp "GET /accounts/login/ HTTP/1.1" 200 18163
+INFO 2025-06-10 16:08:34,330 basehttp "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-06-10 16:08:34,906 basehttp "GET / HTTP/1.1" 200 36959
+INFO 2025-06-10 16:08:35,845 basehttp "GET /api/dashboard-data/ HTTP/1.1" 200 360
+INFO 2025-06-10 16:24:26,914 basehttp "GET /upload/ HTTP/1.1" 200 34591
+WARNING 2025-06-10 16:24:27,178 log Not Found: /placeholder.svg
+WARNING 2025-06-10 16:24:27,181 basehttp "GET /placeholder.svg HTTP/1.1" 404 4117
+INFO 2025-06-10 16:24:30,383 basehttp "GET /history/ HTTP/1.1" 200 28770
+INFO 2025-06-10 16:24:34,901 basehttp "GET /register-cattle/ HTTP/1.1" 200 25276
+INFO 2025-06-10 16:24:38,477 basehttp "GET / HTTP/1.1" 200 36959
+INFO 2025-06-10 16:24:39,029 basehttp "GET /api/dashboard-data/ HTTP/1.1" 200 360
+INFO 2025-06-10 16:30:54,968 autoreload C:\Users\user\Desktop\final yr project\cattle_disease\detection\urls.py changed, reloading.
+INFO 2025-06-10 16:31:05,430 autoreload Watching for file changes with StatReloader
+INFO 2025-06-10 16:31:24,572 views ONNX model loaded successfully
+INFO 2025-06-10 16:31:53,857 autoreload C:\Users\user\Desktop\final yr project\cattle_disease\detection\views.py changed, reloading.
+INFO 2025-06-10 16:32:00,881 autoreload Watching for file changes with StatReloader
+INFO 2025-06-10 16:32:20,659 views ONNX model loaded successfully
+INFO 2025-06-10 16:43:40,305 autoreload Watching for file changes with StatReloader
+INFO 2025-06-10 16:43:57,443 views ONNX model loaded successfully
+INFO 2025-06-10 16:44:03,879 basehttp "GET / HTTP/1.1" 200 37216
+INFO 2025-06-10 16:44:06,946 basehttp "GET /api/dashboard-data/ HTTP/1.1" 200 360
+INFO 2025-06-10 16:44:13,339 basehttp "GET /help/ HTTP/1.1" 200 39055
+INFO 2025-06-10 16:44:29,578 basehttp "GET /download-guide/?format=pdf HTTP/1.1" 200 11057
+INFO 2025-06-10 16:44:31,228 basehttp "GET /download-guide/?format=pdf HTTP/1.1" 200 11057
+INFO 2025-06-10 16:44:49,076 basehttp - Broken pipe from ('127.0.0.1', 60150)
+INFO 2025-06-10 16:48:38,586 basehttp "GET /register-cattle/ HTTP/1.1" 200 25533
+INFO 2025-06-10 16:48:47,909 basehttp "GET /history/ HTTP/1.1" 200 29027
+INFO 2025-06-10 16:48:51,205 basehttp "GET /upload/ HTTP/1.1" 200 34848
+WARNING 2025-06-10 16:48:51,610 log Not Found: /placeholder.svg
+WARNING 2025-06-10 16:48:51,624 basehttp "GET /placeholder.svg HTTP/1.1" 404 4479
+INFO 2025-06-10 16:48:55,316 basehttp "GET / HTTP/1.1" 200 37216
+INFO 2025-06-10 16:48:56,616 basehttp "GET /api/dashboard-data/ HTTP/1.1" 200 360
+INFO 2025-06-10 16:49:10,901 basehttp "GET /upload/ HTTP/1.1" 200 34848
+WARNING 2025-06-10 16:49:11,078 log Not Found: /placeholder.svg
+WARNING 2025-06-10 16:49:11,080 basehttp "GET /placeholder.svg HTTP/1.1" 404 4479
+INFO 2025-06-10 16:49:25,353 basehttp "GET / HTTP/1.1" 200 37216
+INFO 2025-06-10 16:49:25,779 basehttp "GET /api/dashboard-data/ HTTP/1.1" 200 360

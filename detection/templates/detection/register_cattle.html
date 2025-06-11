@@ -1,0 +1,20 @@
+{% extends 'detection/base.html' %}
+{% block content %}
+<h1 class="mb-4">Register Cattle</h1>
+<form method="post" class="card bg-dark text-light p-4">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="tag_number" class="form-label">Tag Number</label>
+        <input type="text" class="form-control" id="tag_number" name="tag_number" required>
+    </div>
+    <div class="mb-3">
+        <label for="breed" class="form-label">Breed</label>
+        <input type="text" class="form-control" id="breed" name="breed" required>
+    </div>
+    <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" class="form-control" id="age" name="age" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}

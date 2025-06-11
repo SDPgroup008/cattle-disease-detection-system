@@ -1,0 +1,1 @@
+// Chart.js is included in the base template and automatically renders charts

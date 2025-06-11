@@ -1,0 +1,384 @@
+{% extends 'detection/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Cattle Disease Detection{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-chart-line me-2"></i>Analytics Dashboard
+{% endblock %}
+
+{% block content %}
+<!-- Welcome Section -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="modern-card">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2 class="mb-2">Welcome back, {{ user.username|title }}! 👋</h2>
+                    <p class="text-secondary mb-0">Here's what's happening with your cattle health monitoring today.</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="d-flex gap-2 justify-content-end">
+                        <a href="{% url 'upload_image' %}" class="btn btn-modern">
+                            <i class="fas fa-cloud-upload-alt me-2"></i>Quick Upload
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Cards -->
+<div class="row g-4 mb-4">
+    <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon">
+                    <i class="fas fa-cow fa-2x text-primary"></i>
+                </div>
+                <div class="text-end">
+                    <div class="stat-number" id="cattle-count">
+                        <span class="loading-spinner"></span>
+                    </div>
+                    <div class="stat-label">Total Cattle</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon">
+                    <i class="fas fa-heart fa-2x text-success"></i>
+                </div>
+                <div class="text-end">
+                    <div class="stat-number text-success" id="healthy-count">
+                        <span class="loading-spinner"></span>
+                    </div>
+                    <div class="stat-label">Healthy</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon">
+                    <i class="fas fa-exclamation-triangle fa-2x text-warning"></i>
+                </div>
+                <div class="text-end">
+                    <div class="stat-number text-warning" id="infected-count">
+                        <span class="loading-spinner"></span>
+                    </div>
+                    <div class="stat-label">Infected</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon">
+                    <i class="fas fa-flask fa-2x text-info"></i>
+                </div>
+                <div class="text-end">
+                    <div class="stat-number text-info" id="total-tests">
+                        <span class="loading-spinner"></span>
+                    </div>
+                    <div class="stat-label">Total Tests</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Section -->
+<div class="row g-4 mb-4">
+    <div class="col-lg-4">
+        <div class="modern-card h-100">
+            <h5 class="card-title mb-4">
+                <i class="fas fa-chart-pie me-2 text-primary"></i>
+                Health Distribution
+            </h5>
+            <div class="chart-container" style="position: relative; height: 300px;">
+                <canvas id="healthPieChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="modern-card h-100">
+            <h5 class="card-title mb-4">
+                <i class="fas fa-chart-bar me-2 text-secondary"></i>
+                Infection Types
+            </h5>
+            <div class="chart-container" style="position: relative; height: 300px;">
+                <canvas id="infectionBarChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-4">
+        <div class="modern-card h-100">
+            <h5 class="card-title mb-4">
+                <i class="fas fa-chart-line me-2 text-accent"></i>
+                Health Trends
+            </h5>
+            <div class="chart-container" style="position: relative; height: 300px;">
+                <canvas id="healthTrendChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row g-4">
+    <div class="col-12">
+        <div class="modern-card">
+            <h5 class="card-title mb-4">
+                <i class="fas fa-bolt me-2 text-warning"></i>
+                Quick Actions
+            </h5>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <a href="{% url 'upload_image' %}" class="btn btn-modern w-100">
+                        <i class="fas fa-cloud-upload-alt me-2"></i>
+                        Upload Image
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="{% url 'register_cattle' %}" class="btn btn-success-modern w-100">
+                        <i class="fas fa-plus-circle me-2"></i>
+                        Add Cattle
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="{% url 'history' %}" class="btn btn-warning-modern w-100">
+                        <i class="fas fa-history me-2"></i>
+                        View History
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    {% if user.is_superuser %}
+                        <a href="{% url 'admin_dashboard' %}" class="btn btn-danger-modern w-100">
+                            <i class="fas fa-cog me-2"></i>
+                            Admin Panel
+                        </a>
+                    {% else %}
+                        <button class="btn btn-modern w-100" disabled>
+                            <i class="fas fa-lock me-2"></i>
+                            Admin Only
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Debug Info (Hidden in production) -->
+{% if debug %}
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="modern-card">
+            <h6 class="text-muted">Debug Information</h6>
+            <small class="text-muted" id="debug-info">Loading debug data...</small>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async function() {
+    try {
+        const response = await fetch('/api/dashboard-data/');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const dashboardData = await response.json();
+        console.log('Fetched Dashboard Data:', dashboardData);
+
+        // Update DOM elements with fetched data
+        document.getElementById('cattle-count').textContent = dashboardData.cattle_count || 0;
+        document.getElementById('healthy-count').textContent = dashboardData.healthy_count || 0;
+        document.getElementById('infected-count').textContent = dashboardData.infected_count || 0;
+        document.getElementById('total-tests').textContent = dashboardData.total_tests || 0;
+        
+        // Debug info
+        const debugElement = document.getElementById('debug-info');
+        if (debugElement) {
+            debugElement.textContent = 
+                `Healthy=${dashboardData.healthy_count}, Infected=${dashboardData.infected_count}, ` +
+                `Foot=${dashboardData.foot_infections}, Mouth=${dashboardData.mouth_infections}`;
+        }
+
+        // Ensure arrays are valid
+        dashboardData.trend_dates = Array.isArray(dashboardData.trend_dates) ? dashboardData.trend_dates : [];
+        dashboardData.trend_healthy = Array.isArray(dashboardData.trend_healthy) ? dashboardData.trend_healthy : [0];
+        dashboardData.trend_foot = Array.isArray(dashboardData.trend_foot) ? dashboardData.trend_foot : [0];
+        dashboardData.trend_mouth = Array.isArray(dashboardData.trend_mouth) ? dashboardData.trend_mouth : [0];
+
+        initializeCharts(dashboardData);
+    } catch (e) {
+        console.error('Error fetching dashboard data:', e);
+        // Show error state
+        ['cattle-count', 'healthy-count', 'infected-count', 'total-tests'].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) element.textContent = 'Error';
+        });
+    }
+});
+
+function initializeCharts(data) {
+    // Chart.js default configuration
+    Chart.defaults.color = '#cbd5e1';
+    Chart.defaults.borderColor = '#334155';
+    Chart.defaults.backgroundColor = 'rgba(99, 102, 241, 0.1)';
+
+    // Health Distribution Pie Chart
+    const healthCtx = document.getElementById('healthPieChart').getContext('2d');
+    new Chart(healthCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Healthy', 'Infected'],
+            datasets: [{
+                data: [data.healthy_count, data.infected_count],
+                backgroundColor: [
+                    'rgba(16, 185, 129, 0.8)',
+                    'rgba(239, 68, 68, 0.8)'
+                ],
+                borderColor: [
+                    '#10b981',
+                    '#ef4444'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        usePointStyle: true
+                    }
+                }
+            }
+        }
+    });
+
+    // Infection Types Bar Chart
+    const infectionCtx = document.getElementById('infectionBarChart').getContext('2d');
+    new Chart(infectionCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Foot Infection', 'Mouth Infection'],
+            datasets: [{
+                label: 'Cases',
+                data: [data.foot_infections, data.mouth_infections],
+                backgroundColor: [
+                    'rgba(245, 158, 11, 0.8)',
+                    'rgba(139, 92, 246, 0.8)'
+                ],
+                borderColor: [
+                    '#f59e0b',
+                    '#8b5cf6'
+                ],
+                borderWidth: 2,
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(51, 65, 85, 0.5)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+
+    // Health Trend Line Chart
+    const trendCtx = document.getElementById('healthTrendChart').getContext('2d');
+    new Chart(trendCtx, {
+        type: 'line',
+        data: {
+            labels: data.trend_dates,
+            datasets: [
+                {
+                    label: 'Healthy',
+                    data: data.trend_healthy,
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                },
+                {
+                    label: 'Foot Infections',
+                    data: data.trend_foot,
+                    borderColor: '#f59e0b',
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    tension: 0.4
+                },
+                {
+                    label: 'Mouth Infections',
+                    data: data.trend_mouth,
+                    borderColor: '#8b5cf6',
+                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                    tension: 0.4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        usePointStyle: true
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(51, 65, 85, 0.5)'
+                    }
+                },
+                x: {
+                    grid: {
+                        color: 'rgba(51, 65, 85, 0.5)'
+                    }
+                }
+            }
+        }
+    });
+}
+</script>
+{% endblock %}

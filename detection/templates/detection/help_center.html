@@ -1,0 +1,323 @@
+{% extends 'detection/base.html' %}
+
+{% block title %}Help Center - Cattle Disease Detection{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-question-circle me-2"></i>Help Center
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Welcome Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="modern-card">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="mb-2">📚 Help & Documentation Center</h2>
+                        <p class="text-secondary mb-0">Find answers, download guides, and get support for the Cattle Disease Detection System.</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <i class="fas fa-life-ring fa-3x text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+            <div class="modern-card h-100">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-download me-2 text-primary"></i>
+                    Download User Guide
+                </h5>
+                <p class="text-secondary mb-4">
+                    Get the complete user guide with step-by-step instructions, troubleshooting tips, and system documentation.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="{% url 'download_user_guide' %}?format=pdf" class="btn btn-modern">
+                        <i class="fas fa-file-pdf me-2"></i>
+                        Download PDF
+                    </a>
+                    <a href="{% url 'download_user_guide' %}?format=docx" class="btn btn-success-modern">
+                        <i class="fas fa-file-word me-2"></i>
+                        Download Word
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="modern-card h-100">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-video me-2 text-secondary"></i>
+                    Video Tutorials
+                </h5>
+                <p class="text-secondary mb-4">
+                    Watch step-by-step video tutorials covering all system features and best practices.
+                </p>
+                <div class="d-flex gap-3">
+                    <button class="btn btn-warning-modern" onclick="alert('Video tutorials coming soon!')">
+                        <i class="fas fa-play me-2"></i>
+                        Watch Tutorials
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Documentation Sections -->
+    <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+            <div class="modern-card h-100 text-center">
+                <div class="mb-3">
+                    <i class="fas fa-rocket fa-3x text-primary"></i>
+                </div>
+                <h6 class="fw-semibold">Getting Started</h6>
+                <p class="text-secondary small">Learn how to set up your account, register cattle, and perform your first disease detection analysis.</p>
+                <button class="btn btn-modern btn-sm" onclick="scrollToSection('getting-started')">
+                    <i class="fas fa-arrow-down me-1"></i>
+                    Learn More
+                </button>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="modern-card h-100 text-center">
+                <div class="mb-3">
+                    <i class="fas fa-cogs fa-3x text-secondary"></i>
+                </div>
+                <h6 class="fw-semibold">Advanced Features</h6>
+                <p class="text-secondary small">Explore advanced analytics, AI explanations, and data management capabilities.</p>
+                <button class="btn btn-modern btn-sm" onclick="scrollToSection('advanced-features')">
+                    <i class="fas fa-arrow-down me-1"></i>
+                    Learn More
+                </button>
+            </div>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="modern-card h-100 text-center">
+                <div class="mb-3">
+                    <i class="fas fa-tools fa-3x text-warning"></i>
+                </div>
+                <h6 class="fw-semibold">Troubleshooting</h6>
+                <p class="text-secondary small">Find solutions to common issues and learn how to optimize system performance.</p>
+                <button class="btn btn-modern btn-sm" onclick="scrollToSection('troubleshooting')">
+                    <i class="fas fa-arrow-down me-1"></i>
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Getting Started Section -->
+    <div class="row mb-4" id="getting-started">
+        <div class="col-12">
+            <div class="modern-card">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-rocket me-2 text-primary"></i>
+                    Getting Started Guide
+                </h5>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h6 class="fw-semibold">📝 Account Setup</h6>
+                        <ol class="text-secondary">
+                            <li>Click "Create an account" on the login page</li>
+                            <li>Enter a unique username</li>
+                            <li>Create a strong password (8+ characters)</li>
+                            <li>Confirm your password</li>
+                            <li>Start using the system immediately</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <h6 class="fw-semibold">🐄 Register Your First Cattle</h6>
+                        <ol class="text-secondary">
+                            <li>Navigate to "Register Cattle" in the sidebar</li>
+                            <li>Enter a unique tag number</li>
+                            <li>Specify the breed</li>
+                            <li>Enter the age in years</li>
+                            <li>Save the registration</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="row g-4 mt-3">
+                    <div class="col-md-6">
+                        <h6 class="fw-semibold">📸 Upload Your First Image</h6>
+                        <ol class="text-secondary">
+                            <li>Go to "Upload Image" from the menu</li>
+                            <li>Select a registered cattle from dropdown</li>
+                            <li>Drag & drop or browse for an image</li>
+                            <li>Click "Analyze Image"</li>
+                            <li>Review the AI analysis results</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <h6 class="fw-semibold">📊 Understanding Results</h6>
+                        <ul class="text-secondary">
+                            <li><span class="badge bg-success">✅ Clear</span> - No infection detected</li>
+                            <li><span class="badge bg-danger">⚠️ Detected</span> - Infection found</li>
+                            <li>Review AI explanation images</li>
+                            <li>Consult veterinarian if needed</li>
+                            <li>Track results in history</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Features Section -->
+    <div class="row mb-4" id="advanced-features">
+        <div class="col-12">
+            <div class="modern-card">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-cogs me-2 text-secondary"></i>
+                    Advanced Features
+                </h5>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h6 class="fw-semibold">🧠 AI Explanation Types</h6>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Purpose</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Integrated Gradients</strong></td>
+                                        <td>Shows AI decision process</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Grad-CAM</strong></td>
+                                        <td>Heat map of important areas</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Occlusion</strong></td>
+                                        <td>Feature importance mapping</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>LIME</strong></td>
+                                        <td>Local interpretation</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <h6 class="fw-semibold">📈 Dashboard Analytics</h6>
+                        <ul class="text-secondary">
+                            <li><strong>Health Distribution:</strong> Pie chart of healthy vs infected</li>
+                            <li><strong>Infection Types:</strong> Bar chart comparing foot and mouth</li>
+                            <li><strong>Health Trends:</strong> Line chart showing patterns over time</li>
+                            <li><strong>Statistics Cards:</strong> Real-time health metrics</li>
+                            <li><strong>Quick Actions:</strong> Fast access to main features</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Troubleshooting Section -->
+    <div class="row mb-4" id="troubleshooting">
+        <div class="col-12">
+            <div class="modern-card">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-tools me-2 text-warning"></i>
+                    Troubleshooting Guide
+                </h5>
+                
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Issue</th>
+                                <th>Possible Cause</th>
+                                <th>Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Login Failed</strong></td>
+                                <td>Incorrect credentials</td>
+                                <td>Check username/password, use password reset if needed</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Image Upload Error</strong></td>
+                                <td>File size or format issue</td>
+                                <td>Use JPG/PNG format, ensure file is under 10MB</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Analysis Not Working</strong></td>
+                                <td>Server processing issue</td>
+                                <td>Wait a moment and try again, contact support if persistent</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Charts Not Loading</strong></td>
+                                <td>Browser compatibility</td>
+                                <td>Update browser, clear cache, try different browser</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mobile Navigation Issues</strong></td>
+                                <td>Screen size or touch issues</td>
+                                <td>Refresh page, try landscape mode, update mobile browser</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Support -->
+    <div class="row">
+        <div class="col-12">
+            <div class="modern-card">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-headset me-2 text-info"></i>
+                    Contact Support
+                </h5>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h6 class="fw-semibold">📧 Email Support</h6>
+                        <ul class="text-secondary">
+                            <li><strong>Technical Support:</strong> support@cattlehealth.com</li>
+                            <li><strong>General Inquiries:</strong> info@cattlehealth.com</li>
+                            <li><strong>Training Requests:</strong> training@cattlehealth.com</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <h6 class="fw-semibold">⚠️ Important Notice</h6>
+                        <div class="alert alert-warning-modern">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            This system assists in cattle health monitoring but should not replace professional veterinary diagnosis. Always consult with a qualified veterinarian for serious health concerns.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function scrollToSection(sectionId) {
+    document.getElementById(sectionId).scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+</script>
+{% endblock %}

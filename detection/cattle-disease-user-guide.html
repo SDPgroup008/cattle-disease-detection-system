@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cattle Disease Detection System - User Guide</title>
+    <style>
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 1in;
+            color: #333;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            font-style: italic;
+        }
+        
+        h1 {
+            color: #1e40af;
+            font-size: 22px;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h2 {
+            color: #2563eb;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        
+        h3 {
+            color: #3b82f6;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-box {
+            background: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .workflow-step {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .step-number {
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .code-flow {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .benefit-item {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .icon {
+            font-weight: bold;
+            color: #059669;
+            margin-right: 8px;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .info-box {
+            background: #dbeafe;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        .table-container {
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background: #f3f4f6;
+            font-weight: bold;
+            color: #374151;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        @media print {
+            body { margin: 0; padding: 0.5in; }
+            .header { page-break-after: avoid; }
+            h1, h2, h3 { page-break-after: avoid; }
+            .workflow-step, .feature-box { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">🐄 Cattle Disease Detection System</div>
+        <div class="subtitle">Comprehensive User Guide & System Documentation</div>
+        <div style="margin-top: 15px; font-size: 14px; color: #6b7280;">
+            AI-Powered Disease Detection for Modern Cattle Management
+        </div>
+    </div>
+
+    <h1>📋 Table of Contents</h1>
+    <ol>
+        <li><a href="#overview">System Overview</a></li>
+        <li><a href="#features">Key Features</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#user-workflow">User Interaction Flow</a></li>
+        <li><a href="#interface">User Interface Guide</a></li>
+        <li><a href="#compatibility">Device Compatibility</a></li>
+        <li><a href="#security">Security & Privacy</a></li>
+        <li><a href="#benefits">Benefits for Users</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        <li><a href="#support">Support & Contact</a></li>
+    </ol>
+
+    <h1 id="overview">🎯 System Overview</h1>
+    
+    <div class="feature-box">
+        <strong>What is the Cattle Disease Detection System?</strong><br>
+        The Cattle Disease Detection System is an advanced AI-powered web application designed to help farmers, veterinarians, and livestock managers detect diseases in cattle through intelligent image analysis. The system leverages cutting-edge machine learning algorithms to analyze uploaded images and identify potential foot and mouth infections in cattle with high accuracy.
+    </div>
+
+    <h2>🔬 Technology Foundation</h2>
+    <ul>
+        <li><strong>AI Engine:</strong> ONNX-based machine learning models</li>
+        <li><strong>Image Processing:</strong> Computer vision algorithms</li>
+        <li><strong>Web Platform:</strong> Django-based responsive web application</li>
+        <li><strong>Database:</strong> PostgreSQL for secure data storage</li>
+        <li><strong>Visualization:</strong> Multiple AI explanation techniques</li>
+    </ul>
+
+    <h2>🎯 Primary Objectives</h2>
+    <ul>
+        <li>Early detection of cattle diseases before symptoms become severe</li>
+        <li>Reduce dependency on manual visual inspections</li>
+        <li>Provide data-driven insights for livestock management</li>
+        <li>Maintain comprehensive digital health records</li>
+        <li>Enable proactive veterinary care and intervention</li>
+    </ul>
+
+    <h1 id="features">⭐ Key Features</h1>
+
+    <div class="benefits-grid">
+        <div class="benefit-item">
+            <div class="icon">🤖</div><strong>AI-Powered Detection</strong><br>
+            Advanced computer vision models analyze cattle images with professional-grade accuracy
+        </div>
+        <div class="benefit-item">
+            <div class="icon">⚡</div><strong>Real-time Analysis</strong><br>
+            Get instant results with detailed explanations and visual indicators
+        </div>
+        <div class="benefit-item">
+            <div class="icon">📊</div><strong>Comprehensive Analytics</strong><br>
+            Dashboard with health statistics, trends, and interactive charts
+        </div>
+        <div class="benefit-item">
+            <div class="icon">🔍</div><strong>Visual Explanations</strong><br>
+            AI-generated heatmaps and analysis showing areas of concern
+        </div>
+        <div class="benefit-item">
+            <div class="icon">📱</div><strong>Mobile Responsive</strong><br>
+            Access from any device - desktop, tablet, or smartphone
+        </div>
+        <div class="benefit-item">
+            <div class="icon">🔒</div><strong>Secure & Private</strong><br>
+            Enterprise-grade security with encrypted data storage
+        </div>
+    </div>
+
+    <h2>🧠 AI Analysis Capabilities</h2>
+    
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Analysis Type</th>
+                    <th>Description</th>
+                    <th>Use Case</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Integrated Gradients</strong></td>
+                    <td>Shows AI decision-making process</td>
+                    <td>Understanding model reasoning</td>
+                </tr>
+                <tr>
+                    <td><strong>Grad-CAM</strong></td>
+                    <td>Heat map highlighting important areas</td>
+                    <td>Visual identification of problem areas</td>
+                </tr>
+                <tr>
+                    <td><strong>Occlusion Analysis</strong></td>
+                    <td>Feature importance mapping</td>
+                    <td>Detailed feature analysis</td>
+                </tr>
+                <tr>
+                    <td><strong>LIME</strong></td>
+                    <td>Local interpretation of model decisions</td>
+                    <td>Localized explanation of results</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h1 id="getting-started">🚀 Getting Started</h1>
+
+    <h2>📝 Account Registration</h2>
+    
+    <div class="workflow-step">
+        <span class="step-number">1</span>
+        <strong>Navigate to Registration</strong><br>
+        Visit the system URL and click "Create an account" on the login page
+    </div>
+
+    <div class="workflow-step">
+        <span class="step-number">2</span>
+        <strong>Complete Registration Form</strong><br>
+        • Enter a unique username<br>
+        • Create a strong password (minimum 8 characters)<br>
+        • Confirm your password<br>
+        • Review password strength indicators
+    </div>
+
+    <div class="workflow-step">
+        <span class="step-number">3</span>
+        <strong>Account Activation</strong><br>
+        Your account is immediately active after successful registration
+    </div>
+
+    <div class="info-box">
+        <strong>💡 Password Requirements:</strong><br>
+        • Minimum 8 characters<br>
+        • At least one uppercase letter<br>
+        • At least one lowercase letter<br>
+        • At least one number<br>
+        • Special characters recommended for enhanced security
+    </div>
+
+    <h2>🔐 System Login</h2>
+    
+    <div class="code-flow">
+        Login Page → Enter Credentials → Dashboard Access
+    </div>
+
+    <ul>
+        <li><strong>Username:</strong> Enter your registered username</li>
+        <li><strong>Password:</strong> Use the password toggle to show/hide characters</li>
+        <li><strong>Remember Me:</strong> Browser will remember your session</li>
+        <li><strong>Security:</strong> Sessions automatically expire for security</li>
+    </ul>
+
+    <h1 id="user-workflow">👤 User Interaction Flow</h1>
+
+    <h2>🏠 Dashboard Overview</h2>
+    
+    <div class="feature-box">
+        Upon login, users are greeted with a comprehensive dashboard that provides:
+        <ul>
+            <li><strong>Welcome Message:</strong> Personalized greeting with user name</li>
+            <li><strong>Statistics Cards:</strong> Real-time health metrics</li>
+            <li><strong>Interactive Charts:</strong> Visual data representation</li>
+            <li><strong>Quick Actions:</strong> One-click access to main features</li>
+            <li><strong>Recent Activity:</strong> Latest test results and updates</li>
+        </ul>
+    </div>
+
+    <h2>🐄 Cattle Registration Process</h2>
+    
+    <div class="code-flow">
+        Register Cattle → Add Details → Validation → Save to System
+    </div>
+
+    <div class="workflow-step">
+        <span class="step-number">1</span>
+        <strong>Access Registration</strong><br>
+        Navigate to "Register Cattle" from the sidebar menu
+    </div>
+
+    <div class="workflow-step">
+        <span class="step-number">2</span>
+        <strong>Enter Cattle Information</strong><br>
+        • <strong>Tag Number:</strong> Unique identifier for the cattle<br>
+        • <strong>Breed:</strong> Specify the cattle breed type<br>
+        • <strong>Age:</strong> Enter age in years (numeric value)
+    </div>
+
+    <div class="workflow-step">
+        <span class="step-number">3</span>
+        <strong>System Validation</strong><br>
+        The system validates that tag numbers are unique and all required fields are completed
+    </div>
+
+    <div class="workflow-step">
+        <span class="step-number">4</span>
+        <strong>Confirmation</strong><br>
+        Successful registration displays confirmation message and redirects to dashboard
+    </div>
+
+    <h2>🔬 Disease Detection Process</h2>
+    
+    <div class="code-flow">
+        Upload Image → Select Cattle → AI Analysis → View Results → Take Action
+    </div>
+
+    <h3>Step 1: Image Upload Interface</h3>
+    <div class="feature-box">
+        <strong>Modern Upload Experience:</strong>
+        <ul>
+            <li><strong>Drag & Drop:</strong> Simply drag image files into the upload area</li>
+            <li><strong>Browse Files:</strong> Click to open file browser</li>
+            <li><strong>Real-time Preview:</strong> See selected image before processing</li>
+            <li><strong>File Validation:</strong> System accepts common image formats (JPG, PNG, etc.)</li>
+            <li><strong>Progress Indicators:</strong> Visual feedback during upload and processing</li>
+        </ul>
+    </div>
+
+    <h3>Step 2: Cattle Selection</h3>
+    <ul>
+        <li>Choose from registered cattle in dropdown menu</li>
+        <li>Each option shows: Tag Number - Breed (Age years)</li>
+        <li>Only cattle owned by current user are displayed</li>
+        <li>Required field - cannot proceed without selection</li>
+    </ul>
+
+    <h3>Step 3: AI Processing</h3>
+    <div class="info-box">
+        <strong>🧠 What Happens During Processing:</strong><br>
+        1. Image preprocessing and normalization<br>
+        2. ONNX model inference for disease detection<br>
+        3. Generation of multiple explanation visualizations<br>
+        4. Calculation of confidence scores<br>
+        5. Creation of detailed analysis report
+    </div>
+
+    <h3>Step 4: Results Interpretation</h3>
+    
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Result Component</th>
+                    <th>Description</th>
+                    <th>Action Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Health Status Cards</strong></td>
+                    <td>Clear visual indicators with color coding</td>
+                    <td>Review overall health assessment</td>
+                </tr>
+                <tr>
+                    <td><strong>Foot Infection</strong></td>
+                    <td>✅ Clear or ⚠️ Detected status</td>
+                    <td>Examine feet if infection detected</td>
+                </tr>
+                <tr>
+                    <td><strong>Mouth Infection</strong></td>
+                    <td>✅ Clear or ⚠️ Detected status</td>
+                    <td>Check mouth area if infection detected</td>
+                </tr>
+                <tr>
+                    <td><strong>Overall Status</strong></td>
+                    <td>Healthy or Needs Attention</td>
+                    <td>Contact veterinarian if needed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>📊 Data Management & Analytics</h2>
+
+    <h3>📈 Dashboard Analytics</h3>
+    <div class="benefits-grid">
+        <div class="benefit-item">
+            <strong>Real-time Statistics</strong><br>
+            Live cattle health metrics updated automatically
+        </div>
+        <div class="benefit-item">
+            <strong>Interactive Charts</strong><br>
+            Health distribution, infection types, and trend analysis
+        </div>
+        <div class="benefit-item">
+            <strong>Historical Trends</strong><br>
+            Track health patterns over time
+        </div>
+        <div class="benefit-item">
+            <strong>Quick Actions</strong><br>
+            Fast access to upload, register, and view functions
+        </div>
+    </div>
+
+    <h3>📋 Test History Management</h3>
+    <ul>
+        <li><strong>Chronological Listing:</strong> All tests ordered by date</li>
+        <li><strong>Detailed Information:</strong> Cattle tag, test date, results, status</li>
+        <li><strong>Quick Access:</strong> Click to view detailed results</li>
+        <li><strong>Pagination:</strong> Organized display for large datasets</li>
+        <li><strong>Search & Filter:</strong> Find specific tests quickly</li>
+    </ul>
+
+    <h1 id="interface">🖥️ User Interface Guide</h1>
+
+    <h2>🎨 Modern Design Elements</h2>
+    
+    <div class="feature-box">
+        <strong>Futuristic Glass-morphism Design:</strong><br>
+        The interface features a modern, glass-like appearance with:
+        <ul>
+            <li>Translucent cards with backdrop blur effects</li>
+            <li>Gradient backgrounds and smooth animations</li>
+            <li>Intuitive color coding for health status</li>
+            <li>Responsive design that adapts to any screen size</li>
+        </ul>
+    </div>
+
+    <h2>📱 Sidebar Navigation</h2>
+    
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Desktop</th>
+                    <th>Mobile</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Collapse/Expand</strong></td>
+                    <td>Click toggle button</td>
+                    <td>Slide-out overlay</td>
+                </tr>
+                <tr>
+                    <td><strong>Active Page</strong></td>
+                    <td>Highlighted with color</td>
+                    <td>Same highlighting</td>
+                </tr>
+                <tr>
+                    <td><strong>User Profile</strong></td>
+                    <td>Bottom of sidebar</td>
+                    <td>Visible in overlay</td>
+                </tr>
+                <tr>
+                    <td><strong>Quick Access</strong></td>
+                    <td>Always visible</td>
+                    <td>Tap to open</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>🎛️ Dashboard Components</h2>
+
+    <h3>Statistics Cards</h3>
+    <ul>
+        <li><strong>Total Cattle:</strong> Number of registered cattle</li>
+        <li><strong>Healthy Count:</strong> Cattle with clean health status</li>
+        <li><strong>Infected Count:</strong> Cattle requiring attention</li>
+        <li><strong>Total Tests:</strong> Number of analyses performed</li>
+    </ul>
+
+    <h3>Interactive Charts</h3>
+    <ul>
+        <li><strong>Health Distribution:</strong> Pie chart showing healthy vs infected ratio</li>
+        <li><strong>Infection Types:</strong> Bar chart comparing foot and mouth infections</li>
+        <li><strong>Health Trends:</strong> Line chart showing health patterns over time</li>
+    </ul>
+
+    <h1 id="compatibility">📱 Device Compatibility</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Device Type</th>
+                    <th>Features Available</th>
+                    <th>Optimizations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Desktop</strong></td>
+                    <td>Full-featured experience</td>
+                    <td>Sidebar navigation, large charts, detailed views</td>
+                </tr>
+                <tr>
+                    <td><strong>Tablet</strong></td>
+                    <td>Touch-optimized interface</td>
+                    <td>Responsive design, touch-friendly buttons</td>
+                </tr>
+                <tr>
+                    <td><strong>Mobile</strong></td>
+                    <td>Core functionality maintained</td>
+                    <td>Slide-out navigation, optimized layouts</td>
+                </tr>
+                <tr>
+                    <td><strong>Browsers</strong></td>
+                    <td>Chrome, Firefox, Safari, Edge</td>
+                    <td>Cross-browser compatibility testing</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>📱 Mobile-Specific Features</h2>
+    <ul>
+        <li><strong>Touch Navigation:</strong> Swipe gestures for navigation</li>
+        <li><strong>Camera Integration:</strong> Direct photo capture from mobile camera</li>
+        <li><strong>Offline Capability:</strong> Basic functionality when connection is limited</li>
+        <li><strong>Push Notifications:</strong> Alerts for important updates</li>
+    </ul>
+
+    <h1 id="security">🔒 Security & Privacy</h1>
+
+    <h2>🛡️ Data Protection Measures</h2>
+    
+    <div class="feature-box">
+        <strong>Enterprise-Grade Security:</strong>
+        <ul>
+            <li><strong>Encrypted Authentication:</strong> Secure login with password hashing</li>
+            <li><strong>Data Isolation:</strong> User data completely separated and protected</li>
+            <li><strong>Secure Image Storage:</strong> Uploaded images encrypted at rest</li>
+            <li><strong>HTTPS Encryption:</strong> All data transmission encrypted</li>
+            <li><strong>Session Management:</strong> Automatic logout for inactive sessions</li>
+        </ul>
+    </div>
+
+    <h2>👥 Role-Based Access Control</h2>
+    
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>User Type</th>
+                    <th>Permissions</th>
+                    <th>Access Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Regular User</strong></td>
+                    <td>Own cattle and test data only</td>
+                    <td>Personal dashboard and features</td>
+                </tr>
+                <tr>
+                    <td><strong>Administrator</strong></td>
+                    <td>System-wide access and management</td>
+                    <td>User management and system statistics</td>
+                </tr>
+                <tr>
+                    <td><strong>Veterinarian</strong></td>
+                    <td>Extended analysis capabilities</td>
+                    <td>Advanced diagnostic features</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>🔐 Privacy Compliance</h2>
+    <ul>
+        <li><strong>Data Minimization:</strong> Only necessary data is collected</li>
+        <li><strong>User Consent:</strong> Clear consent for data processing</li>
+        <li><strong>Data Retention:</strong> Automatic deletion of old data</li>
+        <li><strong>Export Rights:</strong> Users can export their data</li>
+        <li><strong>Deletion Rights:</strong> Users can request data deletion</li>
+    </ul>
+
+    <h1 id="benefits">🎯 Benefits for Users</h1>
+
+    <h2>💰 Economic Benefits</h2>
+    <div class="benefits-grid">
+        <div class="benefit-item">
+            <div class="icon">💵</div><strong>Cost Savings</strong><br>
+            Reduce veterinary costs through early detection and prevention
+        </div>
+        <div class="benefit-item">
+            <div class="icon">⏰</div><strong>Time Efficiency</strong><br>
+            Quick analysis compared to manual inspection methods
+        </div>
+        <div class="benefit-item">
+            <div class="icon">📈</div><strong>Productivity Gains</strong><br>
+            Maintain healthier herds with better productivity
+        </div>
+        <div class="benefit-item">
+            <div class="icon">🎯</div><strong>Targeted Treatment</strong><br>
+            Focus resources on cattle that actually need attention
+        </div>
+    </div>
+
+    <h2>🔬 Technical Benefits</h2>
+    <ul>
+        <li><strong>Early Detection:</strong> Identify diseases before visible symptoms appear</li>
+        <li><strong>Accuracy:</strong> AI analysis reduces human error in diagnosis</li>
+        <li><strong>Consistency:</strong> Standardized analysis across all cattle</li>
+        <li><strong>Documentation:</strong> Automatic digital health record keeping</li>
+        <li><strong>Trend Analysis:</strong> Understand health patterns in your herd</li>
+    </ul>
+
+    <h2>📊 Management Benefits</h2>
+    <ul>
+        <li><strong>Data-Driven Decisions:</strong> Make informed health management choices</li>
+        <li><strong>Preventive Care:</strong> Shift from reactive to proactive health management</li>
+        <li><strong>Record Keeping:</strong> Comprehensive digital health records</li>
+        <li><strong>Compliance:</strong> Meet regulatory requirements for health monitoring</li>
+        <li><strong>Scalability:</strong> Manage large herds efficiently</li>
+    </ul>
+
+    <h1 id="troubleshooting">🔧 Troubleshooting</h1>
+
+    <h2>🚨 Common Issues & Solutions</h2>
+    
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Issue</th>
+                    <th>Possible Cause</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Login Failed</strong></td>
+                    <td>Incorrect credentials</td>
+                    <td>Check username/password, use password reset if needed</td>
+                </tr>
+                <tr>
+                    <td><strong>Image Upload Error</strong></td>
+                    <td>File size or format issue</td>
+                    <td>Use JPG/PNG format, ensure file is under 10MB</td>
+                </tr>
+                <tr>
+                    <td><strong>Analysis Not Working</strong></td>
+                    <td>Server processing issue</td>
+                    <td>Wait a moment and try again, contact support if persistent</td>
+                </tr>
+                <tr>
+                    <td><strong>Charts Not Loading</strong></td>
+                    <td>Browser compatibility</td>
+                    <td>Update browser, clear cache, try different browser</td>
+                </tr>
+                <tr>
+                    <td><strong>Mobile Navigation Issues</strong></td>
+                    <td>Screen size or touch issues</td>
+                    <td>Refresh page, try landscape mode, update mobile browser</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>🔍 Performance Optimization</h2>
+    
+    <div class="info-box">
+        <strong>For Best Performance:</strong><br>
+        • Use high-quality, well-lit images for analysis<br>
+        • Ensure stable internet connection during uploads<br>
+        • Keep browser updated to latest version<br>
+        • Clear browser cache if experiencing slow loading<br>
+        • Use recommended image sizes (1-5MB optimal)
+    </div>
+
+    <h2>📱 Browser Requirements</h2>
+    <ul>
+        <li><strong>Chrome:</strong> Version 90 or later</li>
+        <li><strong>Firefox:</strong> Version 88 or later</li>
+        <li><strong>Safari:</strong> Version 14 or later</li>
+        <li><strong>Edge:</strong> Version 90 or later</li>
+        <li><strong>JavaScript:</strong> Must be enabled</li>
+        <li><strong>Cookies:</strong> Must be enabled for login</li>
+    </ul>
+
+    <h1 id="support">📞 Support & Contact</h1>
+
+    <h2>🆘 Getting Help</h2>
+    
+    <div class="warning-box">
+        <strong>⚠️ Important:</strong> This system is designed to assist in cattle health monitoring but should not replace professional veterinary diagnosis. Always consult with a qualified veterinarian for serious health concerns.
+    </div>
+
+    <h2>📧 Contact Information</h2>
+    <ul>
+        <li><strong>Technical Support:</strong> support@cattlehealth.com</li>
+        <li><strong>General Inquiries:</strong> info@cattlehealth.com</li>
+        <li><strong>Emergency Issues:</strong> Available 24/7 through system</li>
+        <li><strong>Training Requests:</strong> training@cattlehealth.com</li>
+    </ul>
+
+    <h2>📚 Additional Resources</h2>
+    <ul>
+        <li><strong>Video Tutorials:</strong> Step-by-step guides for all features</li>
+        <li><strong>FAQ Section:</strong> Answers to frequently asked questions</li>
+        <li><strong>Best Practices Guide:</strong> Tips for optimal system usage</li>
+        <li><strong>API Documentation:</strong> For advanced integrations</li>
+        <li><strong>Training Materials:</strong> Comprehensive user training resources</li>
+    </ul>
+
+    <h2>🔄 System Updates</h2>
+    <div class="info-box">
+        <strong>Stay Updated:</strong><br>
+        • System updates are deployed automatically<br>
+        • New features are announced through the dashboard<br>
+        • Critical updates may require brief maintenance windows<br>
+        • Users are notified in advance of any scheduled maintenance
+    </div>
+
+    <div class="footer">
+        <strong>Cattle Disease Detection System</strong><br>
+        Version 2.0 | Last Updated: December 2024<br>
+        © 2024 Cattle Health Technologies. All rights reserved.<br>
+        <em>Empowering farmers with AI-driven cattle health solutions</em>
+    </div>
+</body>
+</html>

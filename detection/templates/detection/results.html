@@ -1,0 +1,261 @@
+{% extends 'detection/base.html' %}
+
+{% block title %}Test Results - Cattle Disease Detection{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold mb-3">
+            <i class="fas fa-chart-bar text-primary me-3"></i>
+            Analysis Results
+        </h1>
+        <p class="lead text-secondary">AI-powered disease detection analysis</p>
+    </div>
+
+    <!-- Results Summary -->
+    <div class="row g-4 mb-5">
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card text-center">
+                <div class="mb-3">
+                    <i class="fas fa-foot-print fa-2x {% if test_result.foot_infection %}text-danger{% else %}text-success{% endif %}"></i>
+                </div>
+                <h6 class="fw-semibold">Foot Infection</h6>
+                <div class="mt-2">
+                    {% if test_result.foot_infection %}
+                        <span class="badge bg-danger fs-6">
+                            <i class="fas fa-exclamation-triangle me-1"></i>Detected
+                        </span>
+                    {% else %}
+                        <span class="badge bg-success fs-6">
+                            <i class="fas fa-check-circle me-1"></i>Clear
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card text-center">
+                <div class="mb-3">
+                    <i class="fas fa-mouth-open fa-2x {% if test_result.mouth_infection %}text-danger{% else %}text-success{% endif %}"></i>
+                </div>
+                <h6 class="fw-semibold">Mouth Infection</h6>
+                <div class="mt-2">
+                    {% if test_result.mouth_infection %}
+                        <span class="badge bg-danger fs-6">
+                            <i class="fas fa-exclamation-triangle me-1"></i>Detected
+                        </span>
+                    {% else %}
+                        <span class="badge bg-success fs-6">
+                            <i class="fas fa-check-circle me-1"></i>Clear
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card text-center">
+                <div class="mb-3">
+                    <i class="fas fa-virus fa-2x {% if test_result.is_infected %}text-warning{% else %}text-success{% endif %}"></i>
+                </div>
+                <h6 class="fw-semibold">Overall Status</h6>
+                <div class="mt-2">
+                    {% if test_result.is_infected %}
+                        <span class="badge bg-warning fs-6">
+                            <i class="fas fa-exclamation-triangle me-1"></i>Infected
+                        </span>
+                    {% else %}
+                        <span class="badge bg-success fs-6">
+                            <i class="fas fa-check-circle me-1"></i>Healthy
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+            <div class="stat-card text-center">
+                <div class="mb-3">
+                    <i class="fas fa-heart fa-2x {% if test_result.is_healthy %}text-success{% else %}text-danger{% endif %}"></i>
+                </div>
+                <h6 class="fw-semibold">Health Score</h6>
+                <div class="mt-2">
+                    {% if test_result.is_healthy %}
+                        <span class="badge bg-success fs-6">
+                            <i class="fas fa-heart me-1"></i>Healthy
+                        </span>
+                    {% else %}
+                        <span class="badge bg-danger fs-6">
+                            <i class="fas fa-heartbeat me-1"></i>Needs Attention
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Images Grid -->
+    <div class="row g-4">
+        <!-- Original Image -->
+        <div class="col-lg-6">
+            <div class="modern-card h-100">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-image me-2 text-primary"></i>
+                    Original Image
+                </h5>
+                <div class="image-container">
+                    <img src="{{ image_url }}" class="img-fluid rounded" alt="Original Image" style="width: 100%; height: 300px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Gradients -->
+        <div class="col-lg-6">
+            <div class="modern-card h-100">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-brain me-2 text-secondary"></i>
+                    Integrated Gradients
+                    <span class="badge bg-info ms-2">AI Analysis</span>
+                </h5>
+                <div class="image-container">
+                    {% if integrated_gradients_url %}
+                        <img src="{{ integrated_gradients_url }}" class="img-fluid rounded" alt="Integrated Gradients" style="width: 100%; height: 300px; object-fit: cover;">
+                    {% else %}
+                        <div class="d-flex align-items-center justify-content-center bg-secondary rounded" style="height: 300px;">
+                            <div class="text-center">
+                                <i class="fas fa-exclamation-triangle fa-2x text-warning mb-2"></i>
+                                <p class="text-light">Analysis not available</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Grad-CAM -->
+        <div class="col-lg-6">
+            <div class="modern-card h-100">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-eye me-2 text-accent"></i>
+                    Grad-CAM Visualization
+                    <span class="badge bg-warning ms-2">Heat Map</span>
+                </h5>
+                <div class="image-container">
+                    {% if gradcam_url %}
+                        <img src="{{ gradcam_url }}" class="img-fluid rounded" alt="Grad-CAM" style="width: 100%; height: 300px; object-fit: cover;">
+                    {% else %}
+                        <div class="d-flex align-items-center justify-content-center bg-secondary rounded" style="height: 300px;">
+                            <div class="text-center">
+                                <i class="fas fa-exclamation-triangle fa-2x text-warning mb-2"></i>
+                                <p class="text-light">Analysis not available</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Occlusion -->
+        <div class="col-lg-6">
+            <div class="modern-card h-100">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-search me-2 text-success"></i>
+                    Occlusion Analysis
+                    <span class="badge bg-success ms-2">Feature Map</span>
+                </h5>
+                <div class="image-container">
+                    {% if occlusion_url %}
+                        <img src="{{ occlusion_url }}" class="img-fluid rounded" alt="Occlusion" style="width: 100%; height: 300px; object-fit: cover;">
+                    {% else %}
+                        <div class="d-flex align-items-center justify-content-center bg-secondary rounded" style="height: 300px;">
+                            <div class="text-center">
+                                <i class="fas fa-exclamation-triangle fa-2x text-warning mb-2"></i>
+                                <p class="text-light">Analysis not available</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- LIME -->
+        <div class="col-lg-12">
+            <div class="modern-card">
+                <h5 class="card-title mb-4">
+                    <i class="fas fa-microscope me-2 text-warning"></i>
+                    LIME Explanation
+                    <span class="badge bg-primary ms-2">Local Interpretation</span>
+                </h5>
+                <div class="image-container text-center">
+                    {% if lime_url %}
+                        <img src="{{ lime_url }}" class="img-fluid rounded" alt="LIME" style="max-height: 400px; object-fit: contain;">
+                    {% else %}
+                        <div class="d-flex align-items-center justify-content-center bg-secondary rounded" style="height: 300px;">
+                            <div class="text-center">
+                                <i class="fas fa-exclamation-triangle fa-2x text-warning mb-2"></i>
+                                <p class="text-light">Analysis not available</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="modern-card">
+                <div class="d-flex flex-wrap gap-3 justify-content-center">
+                    <a href="{% url 'dashboard' %}" class="btn btn-modern">
+                        <i class="fas fa-chart-line me-2"></i>
+                        Back to Dashboard
+                    </a>
+                    <a href="{% url 'upload_image' %}" class="btn btn-success-modern">
+                        <i class="fas fa-cloud-upload-alt me-2"></i>
+                        Upload Another
+                    </a>
+                    <a href="{% url 'history' %}" class="btn btn-warning-modern">
+                        <i class="fas fa-history me-2"></i>
+                        View History
+                    </a>
+                    <button class="btn btn-danger-modern" onclick="window.print()">
+                        <i class="fas fa-print me-2"></i>
+                        Print Results
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.image-container img {
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.05);
+}
+
+@media print {
+    .btn, .navbar, .alert {
+        display: none !important;
+    }
+    
+    .modern-card {
+        border: 1px solid #000 !important;
+        background: white !important;
+        color: black !important;
+    }
+}
+</style>
+{% endblock %}
